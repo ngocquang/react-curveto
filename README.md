@@ -24,16 +24,23 @@ class App extends React.Component {
   state = {}
 
 render() {
-    const { selectedOption } = this.state;
-
     return (
-        <div>
-            <div className="A">Element A</div>
-            <div className="B">Element B</div>
-            <CurveTo from="A" to="B" curve={10} />
-        </div>
-    );
-  }
+            <div>
+                <div className="A">Element A</div>
+                <div className="B">Element B</div>
+                <CurveTo
+                        from="A"
+                        to="B"
+                        fromAnchor="top"
+                        toAnchor="bottom"
+                        borderColor="#000"
+                        borderStyle="dotted"
+                        borderWidth={2}
+                        delay={0}
+                        curve={10}/>
+            </div>
+        );
+    }
 }
 ```
 #### Props

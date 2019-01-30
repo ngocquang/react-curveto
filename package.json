@@ -1,6 +1,6 @@
 {
     "name": "react-curveto",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "description": "Draw a curve between two elements in React",
     "license": "MIT",
     "author": "Kevin DeLoach <kdeloach@gmail.com>",

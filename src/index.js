@@ -175,7 +175,7 @@ CurveTo.propTypes = Object.assign({}, {
   fromAnchor: PropTypes.string,
   toAnchor: PropTypes.string,
   delay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  curve: PropTypes.Number,
+  curve: PropTypes.number,
 }, optionalStyleProps);
 
 export class Curve extends PureComponent {
@@ -194,7 +194,7 @@ export class Curve extends PureComponent {
     return document.getElementsByClassName(className)[0];
   }
 
-  calcCurve(curve, x0, y0, x1, y1) {
+  calcCurve(curve, x0, y0, x1) {
 
     const centerX = (x1 - x0) / 2;
     // const centerY = (y1 - y0) / 2;
@@ -232,7 +232,7 @@ export class Curve extends PureComponent {
       zIndex: props.style.zIndex,
     }
 
-    const curveDraw = this.calcCurve(curve, x0, y0, x1, y1);
+    const curveDraw = this.calcCurve(curve, x0, y0, x1);
 
     // As we've seen before, the quadratic Bézier curve
     // involves moving to the starting point, and then
@@ -279,3 +279,7 @@ const CurvePath = ({ instructions, styles }) => (
         strokeDasharray={styles.strokeStyle === 'solid' ? '' : '5,5'}
     />
 );
+CurvePath.propTypes = Object.assign({}, {
+  instructions: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+});
