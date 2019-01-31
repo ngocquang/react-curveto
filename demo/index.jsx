@@ -79,7 +79,8 @@ class DelayTest extends Component {
                     borderStyle="solid"
                     borderWidth={1}
                     delay={0}
-                    curve={-10}
+                    curveFrom={[50, 50]}
+                    curveTo={[-100, -50]}
                     />
 
                 <Block
@@ -105,7 +106,8 @@ class DelayTest extends Component {
                     borderStyle="dotted"
                     borderWidth={2}
                     delay={1000}
-                    curve={0}
+                    curveFrom={[50, 50]}
+                    curveTo={[-10, -10]}
                     />
 
                 <Block
@@ -131,10 +133,37 @@ class DelayTest extends Component {
                     borderStyle="dotted"
                     borderWidth={2}
                     delay={1}
-                    curve={10}
+                    curveFrom={[-50, -50]}
+                    curveTo={[-10, -10]}
+                    />
+                <Block
+                    className="delay-K"
+                    top="380px"
+                    left="120px"
+                    color="#00f"
+                    onMouseOver={() => this.setState({ targetVisible: true })}
+                    onMouseOut={() => this.setState({ targetVisible: true })}
+                    >E</Block>
+                <Block
+                    className="delay-L"
+                    top="380px"
+                    left="400px"
+                    color="#f00"
+                    >F</Block>
+                <CurveTo
+                    from="delay-K"
+                    to="delay-L"
+                    fromAnchor="right"
+                    toAnchor="left"
+                    borderColor="#A0F"
+                    borderStyle="solid"
+                    borderWidth={2}
+                    delay={1}
+                    curveFrom={[0, 0]}
+                    curveTo={[0, 0]}
                     />
             </fieldset>
-       );
+      );
     }
 }
 

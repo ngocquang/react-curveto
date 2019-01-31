@@ -6,6 +6,10 @@
 Draw a curve/line between two elements in React.
 Fork and modify from react-lineto
 
+<center>
+  <img src="media/demo.png"/>
+</center>
+
 # Installation and usage
 
 The easiest way to use react-curveto is to install it from npm and build it into your app with Webpack.
@@ -21,8 +25,6 @@ import React from 'react';
 import CurveTo from 'react-curveto';
 
 class App extends React.Component {
-  state = {}
-
 render() {
     return (
             <div>
@@ -37,7 +39,9 @@ render() {
                         borderStyle="dotted"
                         borderWidth={2}
                         delay={0}
-                        curve={10}/>
+                        curveFrom={[50, 50]}
+                        curveTo={[-100, -50]}
+                    />
             </div>
         );
     }
@@ -58,8 +62,8 @@ render() {
 | to\*        | string | CSS class name of the second element           |
 | within      | string | CSS class name of the desired container        |
 | zIndex      | number | Z-index offset                                 |
-| curve       | number | curve offset, default 0                       |
-
+| curveFrom\* | array  | Cubic control point offset, default [0,0]      | [0,0], [50,-50], etc.
+| curveTo\*   | array  | Cubic control point offset, default [0,0]      | [0,0], [50,-50], etc.
 
 \* Required
 

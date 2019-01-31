@@ -171,11 +171,12 @@ export default class CurveTo extends Component {
 CurveTo.propTypes = Object.assign({}, {
   from: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
+  curveTo: PropTypes.array.isRequired,
+  curveFrom: PropTypes.array.isRequired,
   within: PropTypes.string,
   fromAnchor: PropTypes.string,
   toAnchor: PropTypes.string,
   delay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  curve: PropTypes.number,
 }, optionalStyleProps);
 
 export class Curve extends PureComponent {
@@ -203,7 +204,7 @@ export class Curve extends PureComponent {
   }
 
   render() {
-    const { x0, y0, x1, y1, within = '', curve = 0, } = this.props;
+    const { x0, y0, x1, y1, within = '', curveTo = [0, 0], curveFrom = [0, 0] } = this.props;
 
     this.within = within ? this.findElement(within) : document.body;
 
@@ -232,15 +233,16 @@ export class Curve extends PureComponent {
       zIndex: props.style.zIndex,
     }
 
-    const curveDraw = this.calcCurve(curve, x0, y0, x1);
+    // const curveDraw = this.calcCurve(curve, x0, y0, x1);
 
     // As we've seen before, the quadratic Bézier curve
     // involves moving to the starting point, and then
     // specifying the control and end points with `Q`
     const instructions = `
       M ${x0},${y0}
-      Q ${curveDraw.x},${curveDraw.y} ${x1},${y1}
+      C ${x0 + curveFrom[0]},${y0 + curveFrom[1]} ${x1 + curveTo[0]},${y1 + curveTo[1]} ${x1},${y1}
     `;
+    // Q ${curveDraw.x},${curveDraw.y} ${x1},${y1}
     // C ${x0 + 100},${y0} ${x1 - 50},${y1 + 50} ${x1},${y1}
 
     // We need a wrapper element to prevent an exception when then
