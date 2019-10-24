@@ -188,7 +188,7 @@ export class Curve extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.within.removeChild(this.el);
+    this.within.removeChild(this.node);
   }
 
   findElement(className) {
